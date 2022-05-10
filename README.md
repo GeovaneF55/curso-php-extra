@@ -2,3 +2,7 @@
  - Javascript
  - HTML
  - CSS
+ 
+ - Ajax
+ - jQuery
+ - Banco Relacional 
