@@ -2,5 +2,69 @@
 
 <form action="http://localhost:3003/users" method="POST">
     <input type="text" name="name" id="name">
+    <input type="password" name="password" id="password">
+    <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="type" id="type" value="admin"> Admin
+        <input type="radio" name="type" id="type" value="regular"> Regular
+        <input type="radio" name="type" id="type" value="professor"> Professor
+    </div>
+    <div>
+        <input type="checkbox" name="active" id="active"> Ativo
+    </div>
+    <select name="state" id="state">
+        <option>Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="al">Alagoas</option>
+        <option value="ap">Amapá</option>
+        <option value="am">Amazonas</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+        <option value="df">Distrito Federal</option>
+        <option value="es">Espírito Santo</option>
+        <option value="go">Goiás</option>
+        <option value="ma">Maranhão</option>
+        <option value="mt">Mato Grosso</option>
+        <option value="ms">Mato Grosso do Sul</option>
+        <option value="mg">Minas Gerais</option>
+        <option value="pa">Pará</option>
+        <option value="pb">Paraíba</option>
+        <option value="pr">Paraná</option>
+        <option value="pe">Pernambuco</option>
+        <option value="pi">Piauí</option>
+        <option value="rj">Rio de Janeiro</option>
+        <option value="rn">Rio Grande do Norte</option>
+        <option value="rs">Rio Grande do Sul</option>
+        <option value="ro">Rondônia</option>
+        <option value="rr">Roraima</option>
+        <option value="sc">Santa Catarina</option>
+        <option value="sp">São Paulo</option>
+        <option value="se">Sergipe</option>
+        <option value="to">Tocantins</option>
+    </select>
+    <select name="interests" id="insterest" multiple size="5">
+        <option value="js">Javascript</option>
+        <option value="java">Java</option>
+        <option value="php">PHP</option>
+        <option value="c#">C#</option>
+        <option value="c++">C++</option>
+        <option value="python">Python</option>
+        <option value="ruby">Ruby</option>
+        <option value="go">Go</option>
+        <option value="css">CSS</option>
+        <option value="html">HTML</option>
+        <option value="sql">SQL</option>
+    </select>
     <button>Incluir</button>
 </form>
+
+<style>
+    input, textarea, select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio], input[type=checkbox] {
+        display: inline
+    }
+</style>
