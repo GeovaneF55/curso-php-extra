@@ -68,3 +68,21 @@
         background-size: 200%;
     }
 </style>
+
+<script>
+    function move(elem, init, end, step, callback) {
+        newInit = init - step
+        if(newInit >= end) {
+            elem.style.left = newInit + 'px'
+            setTimeout(() => move(elem, newInit, end, step, callback), 7)
+        } else {
+            callback()
+        }
+    }
+
+    const p = document.querySelector('[wm-slider] > p')
+    p.style.display = 'block'
+    move(p, 1500, -520, 5, () => {
+        console.log('Terminou!!')
+    })
+</script>
