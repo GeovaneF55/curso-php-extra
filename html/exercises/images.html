@@ -82,9 +82,37 @@
         }
     }
 
-    const p = document.querySelector('[wm-slider] > p')
-    p.style.display = 'block'
-    move(p, 1500, -520, 5, () => {
-        console.log('Terminou!!')
-    })
+    // const p = document.querySelector('[wm-slider] > p')
+    // p.style.display = 'block'
+    // move(p, 1500, -520, 5, () => {
+    //     console.log('Terminou!!')
+    // })
+
+    function slider() {
+        const elements = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elements)
+        showSlide(slides, slides[0])
+    }
+
+    function showSlide(slides, slide) {
+        slide.style.display = 'block'
+
+        const init = innerWidth
+        const end = -slide.clientWidth
+
+        slide.style.left = `${init}px`
+
+        move(slide, init, end, 5, () => {
+            slide.style.display = 'none'
+            
+            showSlide(slides, getNext(slides, slide))
+        })
+    }
+
+    function getNext(slides, slide) {
+        const index = slides.indexOf(slide) + 1
+        return index < slides.length ? slides[index] : slides[0]
+    }
+
+    slider()
 </script>
