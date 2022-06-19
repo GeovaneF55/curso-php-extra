@@ -102,6 +102,29 @@ function Progresso() {
     this.atualizarPontos(0)
 }
 
+function estaoSobrepostos(elementoA, elementoB) {
+    const aRect = elementoA.getBoundingClientRect()
+    const bRect = elementoB.getBoundingClientRect()
+
+    const horizontal = aRect.left + aRect.width >= bRect.left && bRect.left + bRect.width >= aRect.left
+    const vertical = aRect.top + aRect.height >= bRect.top && bRect.top + bRect.height >= aRect.top
+
+    return horizontal && vertical
+}
+
+function colidiu(passaro, barreiras) {
+    let colidiu = false
+    barreiras.pares.forEach(parDeBarreiras => {
+        if(!colidiu) {
+            const superior = parDeBarreiras.superior.elemento
+            const inferior = parDeBarreiras.inferior.elemento
+            colidiu = estaoSobrepostos(passaro.elemento, superior)
+                || estaoSobrepostos(passaro.elemento, inferior)
+        }
+    })
+    return colidiu
+}
+
 function FlappyBird() {
     let pontos = 0
 
@@ -124,6 +147,10 @@ function FlappyBird() {
         const temporizador = setInterval(() => {
             barreiras.animar()
             passaro.animar()
+
+            if(colidiu(passaro, barreiras)) {
+                clearInterval(temporizador)
+            }
         }, 20)
     }
 }
